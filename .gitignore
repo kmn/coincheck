@@ -1,0 +1,7 @@
+*.pyc
+*.swp
+*.swo
+settings.py
+samples/
+__pycache__/*
+*.python-version
