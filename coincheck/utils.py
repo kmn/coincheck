@@ -2,6 +2,17 @@ import time
 import hmac
 import hashlib
 import settings
+import datetime
+import pytz
+
+def nounce():
+    '''
+    return utc unix time in second
+
+    TODO: 
+    - return utc unix time in micro second
+    '''
+    return str(int(time.mktime(datetime.datetime.now(pytz.utc).timetuple())))
 
 def make_header(url,
                 access_key=None,
@@ -9,7 +20,7 @@ def make_header(url,
     ''' create request header function
     :param url: URL for the new :class:`Request` object.
     '''
-    nonce = str(time.time()).split('.')[0]
+    nonce = nounce()
     url    = url
     message = nonce + url
     signature = hmac.new(secret_key.encode('utf-8'), message.encode('utf-8'), hashlib.sha256).hexdigest()
@@ -19,3 +30,4 @@ def make_header(url,
        'ACCESS-SIGNATURE': signature
     }
     return headers
+
