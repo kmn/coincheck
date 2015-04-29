@@ -10,29 +10,35 @@ api_urls = { 'ticker'     : '/api/ticker',
              'order_books': '/api/order_books'
              }
 
-def public_api(url):
-    ''' template function of public api'''
-    try :
-        url in api_urls
-        return requests.get(base_url + api_urls.get(url)).text
-    except Exception as e:
-        print(e)
+class Market(object):
+    def __init__(self):
+        pass
 
-def ticker():
-    '''get latest information of coincheck market'''
-    return public_api('ticker') 
 
-def trades():
-    '''get latest deal history of coincheck market'''
-    return public_api('trades') 
-
-def orderbooks():
-    '''get latest asks/bids information of coincheck market'''
-    return public_api('order_books') 
+    def public_api(self,url):
+        ''' template function of public api'''
+        try :
+            url in api_urls
+            return requests.get(base_url + api_urls.get(url)).text
+        except Exception as e:
+            print(e)
+    
+    def ticker(self):
+        '''get latest information of coincheck market'''
+        return self.public_api('ticker') 
+    
+    def trades(self):
+        '''get latest deal history of coincheck market'''
+        return self.public_api('trades') 
+    
+    def orderbooks(self):
+        '''get latest asks/bids information of coincheck market'''
+        return self.public_api('order_books') 
 
 
 if __name__ == '__main__':
     pass
-    #print('ticker: ' + ticker())
-    #print('trades: ' + trades())
-    #print('order_books: ' + orderbooks())
+    m1 = Market()
+    print('ticker: ' + m1.ticker())
+    print('trades: ' + m1.trades())
+    print('order_books: ' + m1.orderbooks())
