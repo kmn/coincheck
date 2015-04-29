@@ -6,6 +6,7 @@ import sys
 
 from codecs import open
 from setuptools import find_packages, setup
+from distutils.core import setup
 
 try:
     from setuptools import setup
@@ -13,7 +14,7 @@ except ImportError:
     from distutils.core import setup
 
 if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist upload')
+    os.system('python setup.py sdist bdist bdist_egg upload')
     sys.exit()
 
 packages = [
@@ -62,7 +63,4 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3'
     ),
-    extras_require={
-        'http': ['requests'],
-    },
 )
