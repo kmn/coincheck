@@ -2,7 +2,6 @@ import time
 import hmac
 import hashlib
 import requests
-import settings
 import json
 from coincheck.utils import make_header
 

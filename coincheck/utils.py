@@ -1,7 +1,6 @@
 import time
 import hmac
 import hashlib
-import settings
 import datetime
 import pytz
 
