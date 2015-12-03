@@ -39,7 +39,3 @@ class Market(object):
 
 if __name__ == '__main__':
     pass
-    m1 = Market()
-    print('ticker: ', m1.ticker())
-    print('trades: ', m1.trades())
-    print('order_books: ' , m1.orderbooks())
