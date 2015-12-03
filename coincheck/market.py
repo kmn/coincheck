@@ -1,4 +1,5 @@
 import requests
+import ast
 
 """
 document: https://coincheck.jp/documents/exchange/api
@@ -19,7 +20,7 @@ class Market(object):
         ''' template function of public api'''
         try :
             url in api_urls
-            return requests.get(base_url + api_urls.get(url)).text
+            return ast.literal_eval(requests.get(base_url + api_urls.get(url)).text)
         except Exception as e:
             print(e)
     
@@ -39,6 +40,6 @@ class Market(object):
 if __name__ == '__main__':
     pass
     m1 = Market()
-    print('ticker: ' + m1.ticker())
-    print('trades: ' + m1.trades())
-    print('order_books: ' + m1.orderbooks())
+    print('ticker: ', m1.ticker())
+    print('trades: ', m1.trades())
+    print('order_books: ' , m1.orderbooks())
