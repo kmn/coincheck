@@ -1,8 +1,6 @@
 import time
 import hmac
 import hashlib
-import datetime
-import pytz
 
 def nounce():
     '''
