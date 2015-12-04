@@ -2,9 +2,9 @@ import time
 import hmac
 import hashlib
 import requests
-import settings
 import json
 from coincheck.utils import make_header
+import simplejson as json
 
 """
 document: https://coincheck.jp/documents/exchange/api
@@ -28,7 +28,7 @@ class Account(object):
 
         r = requests.get(url,
                          headers = headers)
-        return r.text
+        return json.loads(r.text)
     
     def get_balance(self):
         ''' confirm balance
@@ -39,7 +39,7 @@ class Account(object):
                               secret_key = self.secret_key)
         r = requests.get(url,
                          headers = headers)
-        return r.text
+        return json.loads(r.text)
     
 if __name__ == '__main__':
     pass

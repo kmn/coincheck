@@ -1,9 +1,6 @@
 import time
 import hmac
 import hashlib
-import settings
-import datetime
-import pytz
 
 def nounce():
     '''
@@ -12,7 +9,7 @@ def nounce():
     TODO: 
     - return utc unix time in micro second
     '''
-    return str(int(time.mktime(datetime.datetime.now(pytz.utc).timetuple())))
+    return str(int(time.time() * 1000000000))
 
 def make_header(url,
                 access_key=None,
