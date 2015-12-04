@@ -54,13 +54,13 @@ setup(
     license='MIT',
     zip_safe=False,
     classifiers=(
-        'Development Status :: 5 - Production/Stable',
-        'Intended Audience :: Developers',
-        'Natural Language :: English',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3'
+        b'Development Status :: 5 - Production/Stable',
+        b'Intended Audience :: Developers',
+        b'Natural Language :: English',
+        b'License :: OSI Approved :: MIT License',
+        b'Programming Language :: Python',
+        b'Programming Language :: Python :: 2.7',
+        b'Programming Language :: Python :: 3',
+        b'Programming Language :: Python :: 3.3',
     ),
 )
