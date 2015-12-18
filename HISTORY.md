@@ -1,3 +1,8 @@
+## 0.1.8 (2015-12-18)
+
+- Add test code for order
+- Change return type of order instance.
+
 ## 0.1.7 (2015-12-03)
 
 - Add test codes
