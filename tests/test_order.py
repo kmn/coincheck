@@ -47,10 +47,3 @@ def test_history():
     '''
     o1 = order.Order(access_key=settings.access_key, secret_key=settings.secret_key)
     ok_(o1.history().get('success'))
-
-if __name__ == '__main__':
-    #print(test_buy_btc_jpy())
-    #print(market_info.get('ask')/2)
-    #print(test_list())
-    print(test_cancel())
-    #print(test_history())
