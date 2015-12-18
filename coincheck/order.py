@@ -72,11 +72,3 @@ class Order(object):
         headers = make_header(url,access_key=self.access_key,secret_key=self.secret_key)
         r = requests.get(url,headers=headers)
         return json.loads(r.text)
-
-if __name__ == '__main__':
-    o1 = Order(secret_key=settings.secret_key, access_key=settings.access_key)
-    print(o1.buy_btc_jpy(rate=20000, amount=0.1))
-    #print(o1.sell_btc_jpy(rate=40000,amount=0.1))
-    #print(o1.list())
-    #print(o1.history())
-    #print(o1.cancel('665514'))
