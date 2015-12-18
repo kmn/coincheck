@@ -2,7 +2,7 @@ import time
 import hmac
 import hashlib
 import requests
-import settings
+import simplejson as json
 from coincheck.utils import make_header, nounce
 
 """
@@ -40,7 +40,7 @@ class Order(object):
            'ACCESS-SIGNATURE': signature
         }
         r = requests.post(url,headers=headers,data=body)
-        return r.text
+        return json.loads(r.text)
     
     def buy_btc_jpy(self, **kwargs):
         return self.create(order_type='buy', pair='btc_jpy',**kwargs) 
@@ -54,7 +54,7 @@ class Order(object):
         url= 'https://coincheck.jp/api/exchange/orders/opens'
         headers = make_header(url,access_key=self.access_key,secret_key=self.secret_key)
         r = requests.get(url,headers=headers)
-        return r.text
+        return json.loads(r.text)
     
     def cancel(self,order_id):
         ''' cancel the specified order
@@ -63,7 +63,7 @@ class Order(object):
         url= 'https://coincheck.jp/api/exchange/orders/' + order_id
         headers = make_header(url,access_key=self.access_key,secret_key=self.secret_key)
         r = requests.delete(url,headers=headers)
-        return r.text
+        return json.loads(r.text)
     
     def history(self):
         ''' show payment history
@@ -71,7 +71,7 @@ class Order(object):
         url= 'https://coincheck.jp/api/exchange/orders/transactions'
         headers = make_header(url,access_key=self.access_key,secret_key=self.secret_key)
         r = requests.get(url,headers=headers)
-        return r.text
+        return json.loads(r.text)
 
 if __name__ == '__main__':
     o1 = Order(secret_key=settings.secret_key, access_key=settings.access_key)
