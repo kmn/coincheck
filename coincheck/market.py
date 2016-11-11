@@ -2,10 +2,10 @@ import requests
 import ast
 
 """
-document: https://coincheck.jp/documents/exchange/api
+document: https://coincheck.com/documents/exchange/api
 """
 
-base_url = "https://coincheck.jp"
+base_url = "https://coincheck.com"
 api_urls = { 'ticker'     : '/api/ticker',
              'trades'     : '/api/trades',
              'order_books': '/api/order_books'

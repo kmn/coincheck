@@ -7,7 +7,7 @@ from coincheck.utils import make_header
 import simplejson as json
 
 """
-document: https://coincheck.jp/documents/exchange/api
+document: https://coincheck.com/documents/exchange/api
 """
 class Account(object):
     
@@ -21,7 +21,7 @@ class Account(object):
         ''' show user information
         '''
 
-        url= 'https://coincheck.jp/api/accounts'
+        url= 'https://coincheck.com/api/accounts'
         headers = make_header(url,
                               access_key = self.access_key,
                               secret_key = self.secret_key)
@@ -33,7 +33,7 @@ class Account(object):
     def get_balance(self):
         ''' confirm balance
         '''
-        url = 'https://coincheck.jp/api/accounts/balance'
+        url = 'https://coincheck.com/api/accounts/balance'
         headers = make_header(url,
                               access_key = self.access_key,
                               secret_key = self.secret_key)

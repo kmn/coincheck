@@ -1,6 +1,6 @@
 # Coincheck: Coincheck Api Library
 
-coincheck は [coincheck](https://coincheck.jp) の python 製 api ライブラリです. 
+coincheck は [coincheck](https://coincheck.com) の python 製 api ライブラリです.
 
 ```
 > from coincheck import market
@@ -11,7 +11,7 @@ coincheck は [coincheck](https://coincheck.jp) の python 製 api ライブラ�
 
 ## Documentation
 
-Documentation for Coincheck API is  available at https://coincheck.jp/documents/exchange/api
+Documentation for Coincheck API is  available at https://coincheck.com/documents/exchange/api
 
 ### Order
 
@@ -114,7 +114,7 @@ pip install coincheck
 ## Initialization
 
  set your api access-key and secret-key to "coincheck/settings.py"
- to get your api keys , see [API key](https://coincheck.jp/api_settings).
+ to get your api keys , see [API key](https://coincheck.com/api_settings).
 
 ## TODO
 
