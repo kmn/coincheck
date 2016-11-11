@@ -1,3 +1,7 @@
+## 0.1.10 (2016-11-11)
+
+- Fix some bugs
+
 ## 0.1.9 (2016-11-11)
 
 - Change domain (from coincheck.jp to coincheck.com).
