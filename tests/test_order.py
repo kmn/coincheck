@@ -6,6 +6,13 @@ import time
 
 market_info = market.Market().ticker()
 
+def get_n_min_dai(minute=0,tz='UTC'):
+    '''
+    return :minute: before time.
+    '''
+    from datetime import datetime,timedelta
+    from pytz import timezone
+    return (datetime.now(timezone(tz)) -timedelta(minutes=minute)).strftime('%Y-%m-%dT%H:%M')[:-1]
 
 def test_buy_btc_jpy():
     '''
@@ -34,12 +41,13 @@ def test_list():
 
 def test_cancel():
     '''
-    cancel all orders
+    cancel orders in odered in last 10 minute.
     '''
-    order_list = order.Order(access_key=settings.access_key, secret_key=settings.secret_key).list().get('orders')
-    for i in order_list:
-        o1 = order.Order(access_key=settings.access_key, secret_key=settings.secret_key)
-        ok_(o1.cancel(str(i.get('id'))).get('success') )
+    o1 = order.Order(access_key=settings.access_key, secret_key=settings.secret_key)
+    order_id_list_to_be_canceled = [ x.get('id') for x  in o1.list().get('orders') if get_n_min_dai(10) in x.get('created_at') ]
+    order_id_list_to_be_canceled += [ x.get('id') for x  in o1.list().get('orders') if get_n_min_dai(0) in x.get('created_at') ]
+    if not order_id_list_to_be_canceled == []:
+        [ ok_(o1.cancel(str(i)).get('success')) for i in order_id_list_to_be_canceled ]
 
 def test_history():
     ''' 
