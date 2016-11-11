@@ -6,7 +6,7 @@ import simplejson as json
 from coincheck.utils import make_header, nounce
 
 """
-document: https://coincheck.jp/documents/exchange/api
+document: https://coincheck.com/documents/exchange/api
 """
 class Order(object):
 
@@ -30,7 +30,7 @@ class Order(object):
                     'order_type': order_type,
                     'pair': pair
                     }
-        url= 'https://coincheck.jp/api/exchange/orders'
+        url= 'https://coincheck.com/api/exchange/orders'
         body = 'rate={rate}&amount={amount}&order_type={order_type}&pair={pair}'.format(**payload)
         message = nonce + url + body
         signature = hmac.new(self.secret_key.encode('utf-8'), message.encode('utf-8'), hashlib.sha256).hexdigest()
@@ -51,7 +51,7 @@ class Order(object):
     def list(self):
         ''' list all open orders func
         '''
-        url= 'https://coincheck.jp/api/exchange/orders/opens'
+        url= 'https://coincheck.com/api/exchange/orders/opens'
         headers = make_header(url,access_key=self.access_key,secret_key=self.secret_key)
         r = requests.get(url,headers=headers)
         return json.loads(r.text)
@@ -60,7 +60,7 @@ class Order(object):
         ''' cancel the specified order
         :param order_id: order_id to be canceled
         '''
-        url= 'https://coincheck.jp/api/exchange/orders/' + order_id
+        url= 'https://coincheck.com/api/exchange/orders/' + order_id
         headers = make_header(url,access_key=self.access_key,secret_key=self.secret_key)
         r = requests.delete(url,headers=headers)
         return json.loads(r.text)
@@ -68,7 +68,7 @@ class Order(object):
     def history(self):
         ''' show payment history
         '''
-        url= 'https://coincheck.jp/api/exchange/orders/transactions'
+        url= 'https://coincheck.com/api/exchange/orders/transactions'
         headers = make_header(url,access_key=self.access_key,secret_key=self.secret_key)
         r = requests.get(url,headers=headers)
         return json.loads(r.text)
