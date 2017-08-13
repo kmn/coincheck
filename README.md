@@ -47,6 +47,12 @@ Documentation for Coincheck API is  available at https://coincheck.com/documents
  > o1 = order.Order(secret_key=settings.secret_key, access_key=settings.access_key)
  > print(o1.history())
  {"success":true,"transactions":[{"id":21118,"created_at":"2015-04-06T16:39:10.000Z","funds":{"btc":"-0.02","jpy":"624.6"}}]}
+
+ # 自分の取引履歴（ページネーション）を表示する.
+ > from coincheck import order, market, account
+ > o1 = order.Order(secret_key=settings.secret_key, access_key=settings.access_key)
+ > print(o1.history_pagination(limit=1, order='asc', starting_after=None, ending_before=None))
+ {'pagination':{'order':'asc','starting_after':None,'limit':1,'ending_before':None},'data':'data':[{'rate':'216200.0','side':'buy','order_id': 131016623,'id':10175320,'pair':'btc_jpy','created_at':'2017-05-11T15:37:17.000Z','liquidity':'M','fee':'0.0','fee_currency':None,'funds':{'jpy':'-6486.0','btc':'0.03'}}],'success':True}
 ```
  
 ### Market
