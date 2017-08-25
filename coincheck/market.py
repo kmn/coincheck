@@ -21,6 +21,8 @@ class Market(object):
         params = {}
         if(offset>0):
             params = {'offset':offset}
+            if(offset>99):
+                offset=99
         try :
             url in api_urls
             return ast.literal_eval(requests.get(base_url + api_urls.get(url),params=params).text)
