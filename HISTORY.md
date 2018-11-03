@@ -1,3 +1,7 @@
+## 0.1.11 (2018-11-2)
+
+- Security Update related to `CVE-2018-18074`
+
 ## 0.1.10 (2016-11-11)
 
 - Fix some bugs
