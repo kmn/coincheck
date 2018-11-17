@@ -72,3 +72,20 @@ class Order(object):
         headers = make_header(url,access_key=self.access_key,secret_key=self.secret_key)
         r = requests.get(url,headers=headers)
         return json.loads(r.text)
+
+    def history_pagination(self,limit,order='desc',starting_after=None,ending_before=None):
+        ''' show payment history pagination
+        :param limit: int
+        :param order: str; set 'desc' or 'asc'
+        :param starting_after: str; id
+        :param ending before: str; id
+        '''
+        query= '?limit={}&order={}'.format(limit,order)
+        if starting_after is not None:
+            query+= '&starting_after={}'.format(starting_after)
+        if ending_before is not None:
+            query+= '&ending_before={}'.format(ending_before)
+        url= 'https://coincheck.com/api/exchange/orders/transactions_pagination' + query
+        headers = make_header(url,access_key=self.access_key,secret_key=self.secret_key)
+        r = requests.get(url,headers=headers)
+        return json.loads(r.text)
